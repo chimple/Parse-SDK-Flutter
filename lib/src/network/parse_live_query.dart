@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:connectivity/connectivity.dart';
+// import 'package:connectivity/connectivity.dart';
 import 'package:flutter/widgets.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
@@ -46,8 +46,8 @@ enum LiveQueryClientEvent { CONNECTED, DISCONNECTED, USER_DISCONNECTED }
 class LiveQueryReconnectingController with WidgetsBindingObserver {
   LiveQueryReconnectingController(
       this._reconnect, this._eventStream, this.debug) {
-    Connectivity().checkConnectivity().then(_connectivityChanged);
-    Connectivity().onConnectivityChanged.listen(_connectivityChanged);
+    // Connectivity().checkConnectivity().then(_connectivityChanged);
+    // Connectivity().onConnectivityChanged.listen(_connectivityChanged);
 
     _eventStream.listen((LiveQueryClientEvent event) {
       switch (event) {
@@ -91,16 +91,16 @@ class LiveQueryReconnectingController with WidgetsBindingObserver {
 
   Timer _currentTimer;
 
-  void _connectivityChanged(ConnectivityResult state) {
-    if (!_isOnline && state != ConnectivityResult.none) {
-      _retryState = 0;
-    }
-    _isOnline = state != ConnectivityResult.none;
-    if (debug) {
-      print('$DEBUG_TAG: $state');
-    }
-    _setReconnect();
-  }
+  // void _connectivityChanged(ConnectivityResult state) {
+  //   if (!_isOnline && state != ConnectivityResult.none) {
+  //     _retryState = 0;
+  //   }
+  //   _isOnline = state != ConnectivityResult.none;
+  //   if (debug) {
+  //     print('$DEBUG_TAG: $state');
+  //   }
+  //   _setReconnect();
+  // }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
