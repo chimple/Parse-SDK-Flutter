@@ -48,7 +48,7 @@ class LiveQueryReconnectingController with WidgetsBindingObserver {
       this._reconnect, this._eventStream, this.debug) {
     // Connectivity().checkConnectivity().then(_connectivityChanged);
     // Connectivity().onConnectivityChanged.listen(_connectivityChanged);
-
+    _setReconnect();
     _eventStream.listen((LiveQueryClientEvent event) {
       switch (event) {
         case LiveQueryClientEvent.CONNECTED:
@@ -85,7 +85,8 @@ class LiveQueryReconnectingController with WidgetsBindingObserver {
   final bool debug;
 
   int _retryState = 0;
-  bool _isOnline = false;
+  // bool _isOnline = false;
+  final bool _isOnline = true;
   bool _isConnected = false;
   bool _userDisconnected = false;
 

@@ -43,6 +43,7 @@ enum LiveQueryClientEvent { CONNECTED, DISCONNECTED, USER_DISCONNECTED }
 class LiveQueryReconnectingController with WidgetsBindingObserver {
   LiveQueryReconnectingController(
       this._reconnect, this._eventStream, this.debug) {
+    _setReconnect();
     // _connectivityChanged(ConnectivityResult.wifi);
     _eventStream.listen((LiveQueryClientEvent event) {
       switch (event) {
@@ -80,7 +81,8 @@ class LiveQueryReconnectingController with WidgetsBindingObserver {
   final bool debug;
 
   int _retryState = 0;
-  bool _isOnline = false;
+  // bool _isOnline = false;
+  final bool _isOnline = true;
   bool _isConnected = false;
   bool _userDisconnected = false;
 
