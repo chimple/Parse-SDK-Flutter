@@ -48,6 +48,7 @@ class LiveQueryReconnectingController with WidgetsBindingObserver {
       this._reconnect, this._eventStream, this.debug) {
     // Connectivity().checkConnectivity().then(_connectivityChanged);
     // Connectivity().onConnectivityChanged.listen(_connectivityChanged);
+    _setReconnect();
     _eventStream.listen((LiveQueryClientEvent event) {
       switch (event) {
         case LiveQueryClientEvent.CONNECTED:
