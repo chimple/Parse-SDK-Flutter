@@ -17,7 +17,7 @@ class ParseACL {
 
   final String _publicKEY = '*';
   final Map<String, _ACLPermissions> _permissionsById =
-  <String, _ACLPermissions>{};
+      <String, _ACLPermissions>{};
 
   /// Helper for setting stuff
   void _setPermissionsIfNonEmpty(
@@ -60,6 +60,21 @@ class ParseACL {
         userId: userId,
         readPermission: allowed,
         writePermission: writePermission);
+  }
+
+  ///Set whether given role is allowed to write or read this object.
+  void setRoleAccess(
+      {@required String role,
+      bool writePermission = false,
+      bool readPermission = true}) {
+    if (role == null) {
+      throw 'cannot setRoleAccess for null role';
+    }
+    _setPermissionsIfNonEmpty(
+      userId: 'role:' + role,
+      readPermission: readPermission,
+      writePermission: writePermission,
+    );
   }
 
   /// Get whether the given user id is *explicitly* allowed to read this object. Even if this returns
