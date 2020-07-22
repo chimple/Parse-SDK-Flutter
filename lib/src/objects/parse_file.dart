@@ -20,7 +20,8 @@ class ParseFile extends ParseObject {
             securityContext: ParseCoreData().securityContext);
 
     if (kIsWeb) {
-      _path = '/files/$name';
+      final String ext = path.extension(name).replaceAll('.', '');
+      _path = '/files/media.$ext';
     } else {
       if (file != null) {
         name = path.basename(file.path);
