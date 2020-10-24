@@ -6,7 +6,7 @@ class ParseFile extends ParseObject {
   /// {https://docs.parseplatform.org/rest/guide/#files/}
   ParseFile(this.file,
       {this.byteFile,
-      String name,
+      String name: '',
       String url,
       bool debug,
       ParseHTTPClient client,
